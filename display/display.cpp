@@ -5,29 +5,29 @@ using namespace cv;
 
 int main(){
 
-	VideoCapture cap(0);
-	namedWindow("Display",CV_WINDOW_AUTOSIZE);
+	VideoCapture cap(0);           // 0 for default webcam , use 1, 2 for other webcams
+	namedWindow("Display",CV_WINDOW_AUTOSIZE);     // create a window to display stream
 	Mat frame;
 
-	while(1){
+	while(true){
 		
 		bool isopen=cap.read(frame);
 		
-		if(!isopen){
-			cout<<"cannot read video";
+		if(!isopen){                 // error check
+			cout<<"Cannot read video";
 			break;
 		}
 		
 		imshow("Display",frame);
 
-		char key=cvWaitKey(30);
-		if((key) == 27){
+		char key=cvWaitKey(30);	    // waits for 30 ms
+		if((key) == 27){            // for escape 
 			break;
 		}
 		
 	}
 
-	destroyAllWindows();
+	destroyAllWindows();          
 	return 0;
 }
 
